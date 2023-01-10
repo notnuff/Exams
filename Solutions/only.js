@@ -6,8 +6,10 @@ const only = (dictionary, ...only) => {
   const keys = Object.keys(dictionary);
   const result = {};
   for (const key of keys) {
-    const condition = only.includes(key);
-    if (condition) result[key] = dictionary[key];
+    for (const requestKey of only) {
+      const condition = (requestKey === key);
+      if (condition) result[key] = dictionary[key];
+    }
   }
   return result;
 };
